@@ -24,7 +24,7 @@ export DNS_PREFIX=$CLUSTER_NAME
 # Create Azure Container Service with Kubernetes orchestrator
 `az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --name=$CLUSTER_NAME --dns-prefix=$DNS_PREFIX --generate-ssh-keys`
 
-# Install the Kubrenetes CLI if you don't have it
+# Install the Kubernetes CLI if you don't have it
 `az acs kubernetes install-cli`
 
 # Login to Kubernetes cluster
