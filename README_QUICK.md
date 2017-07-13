@@ -31,7 +31,7 @@ docker push $CLUSTER_NAME.azurecr.io/azure-amazon-linux:latest
 
 ```
 # Kubernetes Commands
-kubectl run $CLUSTER_NAME --replicas=2 --image $CLUSTER_NAME.azurecr.io/azure-amazon-linux --port=80`
+kubectl run $CLUSTER_NAME --replicas=2 --image $CLUSTER_NAME.azurecr.io/azure-amazon-linux --port=80
 kubectl expose deployments $CLUSTER_NAME --port=80 --type=LoadBalancer
 
 # Look for the external IP Assigned to the Service
