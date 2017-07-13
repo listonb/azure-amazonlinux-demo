@@ -8,15 +8,16 @@ cd azure-amazonlinux-demo
 # Set reusable environment variables
 export RESOURCE_GROUP=amazonlinuxdemo
 export LOCATION=eastus
-export CLUSTER_NAME=amazonlinux
+# Change this to something unique
+export CLUSTER_NAME=amazonlinuxdemo
 export DNS_PREFIX=$CLUSTER_NAME
 ```
 
 ```
 # Azure CLI Commands
-az group create -l $LOCATION --name $RESOURCE_GROUP`
+az group create -l $LOCATION --name $RESOURCE_GROUP
 az acr create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --sku Basic --admin-enabled true
-az acr credential show --name $CLUSTER_NAME --query "join(' ', ['docker login $CLUSTER_NAME.azurecr.io -u $CLUSTER_NAME', '-p', passwords[0].value])" -o tsv | sh
+az acr login --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
 az acs create --orchestrator-type=kubernetes --resource-group $RESOURCE_GROUP --name=$CLUSTER_NAME --dns-prefix=$DNS_PREFIX --generate-ssh-keys
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
