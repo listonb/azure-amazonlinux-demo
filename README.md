@@ -68,3 +68,6 @@ export DNS_PREFIX=$CLUSTER_NAME
 
 # See Deployment
 `kubectl describe deployment $CLUSTER_NAME`
+
+# Author
+Bryan Liston
